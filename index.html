@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desvendando a Normalização: Como Organizar Dados sem Dor de Cabeça</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Desvendando a Normalização: Como Organizar Dados sem Dor de Cabeça</h1>
+        <p>De uma planilha caótica cheia de repetições até a Terceira Forma Normal (3FN)</p>
+    </header>
+
+    <div class="container">
+        
+        <nav class="toc">
+            <h2>Navegação do Artigo</h2>
+            <ul>
+                <li><a href="#problema">1. O Problema Real: O Caos na Planilha de Vendas</a></li>
+                <li><a href="#1fn">2. Primeira Forma Normal (1FN): Valores Atômicos</a></li>
+                <li><a href="#2fn">3. Segunda Forma Normal (2FN): Dependência Total</a></li>
+                <li><a href="#3fn">4. Terceira Forma Normal (3FN): Adeus às Dependências Transitivas</a></li>
+                <li><a href="#sql">5. Código SQL Prático (PostgreSQL)</a></li>
+                <li><a href="#erros">6. Erros Comuns e Limitações</a></li>
+                <li><a href="#autores">7. Autores e Referências</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <article>
+                
+                <section id="problema">
+                    <h2>1. O Problema Real: O Caos na Planilha de Vendas</h2>
+                    <p>Imagine que você acabou de entrar numa empresa e o sistema deles guarda todas as informações de pedidos, clientes e produtos numa única tabela gigante gerada direto de um arquivo Excel exportado. À primeira vista, parece prático: você olha para uma única tela e vê tudo.</p>
+                    <p>Porém, o caos começa quando o cliente <strong>Carlos Silva</strong> muda de telefone ou quando o produto <em>Borracha</em> sofre alteração de preço. Se o Carlos comprou 10 vezes, teremos o endereço e o telefone dele repetidos em 10 linhas diferentes. Se ele mudar de número e esquecermos de atualizar em uma das linhas, teremos dados inconsistentes. Isso gera o que chamamos de <strong>anomalias de atualização, inserção e exclusão</strong>.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <caption>Tabela Não Normalizada (O "Monstro" de uma tabela única)</caption>
+                            <thead>
+                                <tr>
+                                    <th>id_pedido</th>
+                                    <th>cliente</th>
+                                    <th>telefone_cliente</th>
+                                    <th>produto</th>
+                                    <th>valor_unitario</th>
+                                    <th>qtd</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Carlos Silva</td>
+                                    <td>(11) 98888-1111</td>
+                                    <td>Borracha</td>
+                                    <td>R$ 6,00</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Carlos Silva</td>
+                                    <td>(11) 98888-1111</td>
+                                    <td>Caneta</td>
+                                    <td>R$ 3,00</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Ana Souza</td>
+                                    <td>(11) 97777-2222</td>
+                                    <td>Caderno</td>
+                                    <td>R$ 15,00</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="1fn">
+                    <h2>2. Primeira Forma Normal (1FN): Valores Atômicos</h2>
+                    <p>A primeira missão para arrumar a casa é aplicar a <strong>1FN</strong>. A regra de ouro aqui é simples: <em>cada coluna deve conter apenas um único valor indivisível (atômico)</em> e não podemos ter grupos repetitivos na mesma linha.</p>
+                    <p>Se tivéssemos múltiplos telefones na mesma célula (ex: <code>(11) 9888-1111 / (11) 9999-2222</code>), precisaríamos isolá-los. No nosso exemplo, garantimos que cada célula contenha apenas um dado elementar.</p>
+
+                    <div class="deep-dive">
+                        <h4>Aprofundamento Teórico: Domínios e Atipicidade</h4>
+                        <p>Formalmente, a 1FN exige que os domínios de todos os atributos sejam atômicos, o que significa que valores compostos ou multivalorados não são permitidos nas relações relacionais puras de Codd.</p>
+                    </div>
+                </section>
