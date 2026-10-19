@@ -89,3 +89,59 @@
                         <p>Formalmente, a 1FN exige que os domínios de todos os atributos sejam atômicos, o que significa que valores compostos ou multivalorados não são permitidos nas relações relacionais puras de Codd.</p>
                     </div>
                 </section>
+
+                <section id="2fn">
+                    <h2>3. Segunda Forma Normal (2FN): Dependência Total</h2>
+                    <p>Para alcançar a <strong>2FN</strong>, a tabela precisa estar na 1FN, e todos os atributos que não são chave devem depender inteiramente da chave primária inteira.</p>
+                    <p>Olhando para a nossa tabela original, o <code>valor_unitario</code> e o nome do <code>produto</code> dependem exclusivamente do produto em si, e não do pedido. Se guardarmos o valor do produto na tabela de pedidos, teremos redundância desnecessária. Vamos separar em duas tabelas: <code>produtos</code> e <code>pedidos</code>.</p>
+
+                    <div class="table-container">
+                        <table>
+                            <caption>Tabela Separada: Produtos</caption>
+                            <thead>
+                                <tr>
+                                    <th>id_produto</th>
+                                    <th>nome_produto</th>
+                                    <th>valor_unitario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Borracha</td>
+                                    <td>6,00</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>Caneta</td>
+                                    <td>3,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="3fn">
+                    <h2>4. Terceira Forma Normal (3FN): Adeus às Dependências Transitivas</h2>
+                    <p>Chegamos ao ponto crítico do nosso artigo. A <strong>3FN</strong> exige que a tabela esteja na 2FN e que <em>nenhuma coluna não-chave dependa de outra coluna não-chave</em> (dependência transitiva).</p>
+                    <p>Por exemplo, se tivéssemos uma tabela de clientes onde guardamos o CEP e a cidade, a cidade depende do CEP, e não diretamente do ID do cliente. Na 3FN, removemos essas dependências indiretas criando tabelas específicas.</p>
+                </section>
+
+                <section id="avancadas">
+                    <h2>5. Formas Normais Avançadas: BCNF, 4FN e 5FN</h2>
+                    <p>Mesmo após atingir a 3FN, alguns cenários complexos ainda podem apresentar redundâncias ocultas. É aqui que entram os níveis avançados de normalização:</p>
+                    
+                    <h3>Forma Normal de Boyce-Codd (BCNF)</h3>
+                    <p>A BCNF é uma versão mais restrita e rigorosa da 3FN. Ela resolve casos raros onde uma tabela possui múltiplas chaves candidatas que se sobrepõem.</p>
+                    
+                    <div class="deep-dive">
+                        <h4>A Regra da BCNF em linguagem simples:</h4>
+                        <p>Em vez da definição matemática complexa de que <em>"para toda dependência funcional (X &rarr; Y), X deve ser uma superchave"</em>, pense na BCNF como a regra do <strong>"chefe absoluto"</strong>: <strong>só pode determinar o valor de outra coluna quem for o identificador único (a chave) daquela tabela</strong>. Se uma coluna comum estiver a mandar noutra, a tabela tem de ser dividida.</p>
+                    </div>
+
+                    <h3>Quarta Forma Normal (4FN): Dependências Multivaloradas</h3>
+                    <p>A 4FN trata de tabelas que possuem <strong>dependências multivaloradas independentes</strong>. Imagine um sistema onde um curso possui vários livros indicados e vários professores disponíveis. Se você colocar tudo numa tabela só sem relação direta entre livro e professor, haverá uma explosão de linhas duplicadas. A 4FN exige que se separem essas informações em tabelas independentes.</p>
+
+                    <h3>Quinta Forma Normal (5FN): Dependência de Junção</h3>
+                    <p>Também conhecida como <em>Forma Normal de Projeção-Junção</em>, a 5FN lida com casos extremos onde uma tabela pode ser decomposta em várias tabelas menores e depois recomposta sem perda de dados, garantindo que não existam restrições de junção cíclica ocultas.</p>
+                </section>
