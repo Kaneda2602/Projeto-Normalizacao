@@ -212,6 +212,9 @@ Execute cada teste separadamente. Dependendo do cliente SQL, uma instrução com
 ## Autoria e contribuição
 
 Projeto desenvolvido para fins educacionais. 
+
 Autores: Heloiza Kaneda, Leonardo Wilson, Maria Alice, Tatiane Silva
+
 Disciplina: Modelagem de Banco de Dados
+
 Instituição: Centro Universitário Braz Cubas
