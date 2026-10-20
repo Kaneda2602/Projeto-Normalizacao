@@ -201,18 +201,17 @@ Execute cada teste separadamente. Dependendo do cliente SQL, uma instrução com
 
 ## 10. Referências
 
-Consulte e registre a edição utilizada na entrega acadêmica. Referências recomendadas para aprofundar os conceitos:
-
 - E. F. Codd. “A Relational Model of Data for Large Shared Data Banks.” *Communications of the ACM*, 1970. DOI: https://doi.org/10.1145/362384.362685
 - Abraham Silberschatz, Henry F. Korth e S. Sudarshan. *Database System Concepts*. McGraw-Hill. Consulte a edição disponível na biblioteca.
 - Ramez Elmasri e Shamkant B. Navathe. *Fundamentals of Database Systems*. Pearson. Consulte a edição disponível na biblioteca.
 - PostgreSQL Documentation — Constraints: https://www.postgresql.org/docs/current/ddl-constraints.html
 - PostgreSQL Documentation — Identity Columns: https://www.postgresql.org/docs/current/ddl-identity-columns.html
 
-As referências de livros devem ser completadas com a edição, o ano e os demais dados bibliográficos da versão efetivamente consultada. Não inclua fontes que não tenha verificado.
-
 ---
 
 ## Autoria e contribuição
 
-Projeto desenvolvido para fins educacionais. Adicione aqui os nomes dos autores, a disciplina, a instituição e a data de entrega, conforme as orientações do professor.
+Projeto desenvolvido para fins educacionais. 
+Autores: Heloiza Kaneda, Leonardo Wilson, Maria Alice, Tatiane Silva
+Disciplina: Modelagem de Banco de Dados
+Instituição: Centro Universitário Braz Cubas
