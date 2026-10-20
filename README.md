@@ -218,3 +218,6 @@ Autores: Heloiza Kaneda, Leonardo Wilson, Maria Alice, Tatiane Silva
 Disciplina: Modelagem de Banco de Dados
 
 Instituição: Centro Universitário Braz Cubas
+
+## URL Site 🔵
+https://projetonormalizacao.vercel.app/
