@@ -145,3 +145,101 @@
                     <h3>Quinta Forma Normal (5FN): Dependência de Junção</h3>
                     <p>Também conhecida como <em>Forma Normal de Projeção-Junção</em>, a 5FN lida com casos extremos onde uma tabela pode ser decomposta em várias tabelas menores e depois recomposta sem perda de dados, garantindo que não existam restrições de junção cíclica ocultas.</p>
                 </section>
+                <section id="sql">
+                    <h2>5. Código SQL Prático (PostgreSQL)</h2>
+                    <p>Vamos colocar a mão na massa com um script executável em PostgreSQL (versão 15+) que aplica a modelagem normalizada para o nosso cenário:</p>
+                
+                    <pre><code>-- Criação da tabela de Clientes
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+
+-- Criação da tabela de Produtos
+CREATE TABLE produtos (
+    id SERIAL PRIMARY KEY,
+    nome_produto VARCHAR(100) NOT NULL,
+    valor_unitario NUMERIC(10,2) NOT NULL
+);
+
+-- Criação da tabela de Pedidos (Relacionada com Chaves Estrangeiras - FK)
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE,
+    CONSTRAINT fk_produto FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE RESTRICT
+);
+
+-- Inserindo dados seguros e normalizados
+INSERT INTO clientes (nome, telefone) VALUES ('Carlos Silva', '(11) 98888-1111');
+INSERT INTO produtos (nome_produto, valor_unitario) VALUES ('Borracha', 6.00);
+INSERT INTO pedidos (cliente_id, produto_id, quantidade) VALUES (1, 1, 2);
+</code></pre>
+                    <p><em>Link para o script completo no repositório oficial: <a href="https://github.com/tatianesilva-ads/normalizacao-artigo" target="_blank">Ver script.sql no GitHub</a></em></p>
+                </section>
+
+                <section id="erros">
+                    <h2>6. Erros Comuns e Limitações</h2>
+                    <div class="warning-box">
+                        <h4>Cuidado com o excesso de normalização!</h4>
+                        <p>Muitos iniciantes acham que devem normalizar absolutamente tudo até a última forma normal sem pensar no desempenho. Em sistemas analíticos (OLAP), tabelas excessivamente normalizadas exigem dezenas de <code>JOIN</code>s lentos. A normalização protege a escrita (OLTP), mas deve ser avaliada com cautela em relatórios massivos.</p>
+                    </div>
+                </section>
+
+                <section id="autores" class="authors-section">
+                    <h2>7. Autores e Informações</h2>
+                    <p>Artigo revisado e publicado em: <strong>Outubro de 2026</strong>
+                    
+                    <div class="author-card">
+                        <img src="Assets\Heloisa_Kaneda.jpeg" alt="Foto de perfil de Heloisa Kaneda" >
+                        <div class="author-info">
+                            <h4>Heloisa Kaneda</h4>
+                            <p>Estudante de Ciência da Computação (Universidade Braz Cubas) </p>
+                            <div class="author-links">
+                                <a href="https://github.com/Kaneda2602" target="_blank">GitHub</a>
+                                <a href="https://www.linkedin.com/in/heloiza-kaneda-de-souza-santos-85414342b/" target="_blank">LinkedIn</a>
+                            </div>
+
+                            <img src="Assets\Leonardo_Oliveira.jpeg" alt="Foto de perfil de Leonardo Oliveira" >
+                            <h4>Leonardo Oliveira</h4>
+                            <p>Estudante de Ciência da Computação (Universidade Braz Cubas) </p>
+                            <div class="author-links">
+                                <a href="https://github.com/Leowilsonn" target="_blank">GitHub</a>
+                                <a href="https://www.linkedin.com/in/leonardo-wilson-b1b64a2a7?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LinkedIn</a>
+                            </div>
+
+                            <img src="Assets\Maria_Alice.jpeg" alt="Foto de perfil de Maria Alice" >
+                            <h4>Maria Alice</h4>
+                            <p>Estudante de Análise e Desenvolvimento de Sistemas (Universidade Braz Cubas) </p>
+                            <div class="author-links">
+                                <a href="https://github.com/magnzg" target="_blank">GitHub</a>
+                                <a href="https://www.linkedin.com/in/maria-alice-gonzaga-18904b42b/" target="_blank">LinkedIn</a>
+                            </div>
+
+                            <img src="Assets\Tatiane_Silva.jpg" alt="Foto de perfil de Tatiane Silva" >
+                            <h4>Tatiane Silva</h4>
+                            <p>Estudante de Análise e Desenvolvimento de Sistemas (Universidade Braz Cubas) </p>
+                            <div class="author-links">
+                                <a href="https://github.com/tatianesilva-ads" target="_blank">GitHub</a>
+                                <a href="https://www.linkedin.com/in/tatiane-silva-data/" target="_blank">LinkedIn</a>
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+        </main>
+
+        <footer>
+            <p>Licença MIT &copy; 2026 Heloisa Kaneda, Leonardo Oliveira e Tatiane Silva. Todos os direitos reservados. As opiniões expressas neste artigo são exclusivas dos autores.</p>
+            <p><a href="https://github.com/Kaneda2602/Projeto-Normalizacao.git" target="_blank">Aceder ao Repositório no GitHub</a></p>
+        </footer>
+
+    </div>
+</body>
+</html>
