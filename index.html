@@ -147,7 +147,7 @@
                     <p>Também conhecida como <em>Forma Normal de Projeção-Junção</em>, a 5FN lida com casos extremos onde uma tabela pode ser decomposta em várias tabelas menores e depois recomposta sem perda de dados, garantindo que não existam restrições de junção cíclica ocultas.</p>
                 </section>
                 <section id="sql">
-                    <h2>5. Código SQL Prático (PostgreSQL)</h2>
+                    <h2>6. Código SQL Prático (PostgreSQL)</h2>
                     <p>Vamos colocar a mão na massa com um script executável em PostgreSQL (versão 15+) que aplica a modelagem normalizada para o nosso cenário:</p>
                 
                     <pre><code>-- Criação da tabela de Clientes
@@ -179,11 +179,11 @@ INSERT INTO clientes (nome, telefone) VALUES ('Carlos Silva', '(11) 98888-1111')
 INSERT INTO produtos (nome_produto, valor_unitario) VALUES ('Borracha', 6.00);
 INSERT INTO pedidos (cliente_id, produto_id, quantidade) VALUES (1, 1, 2);
 </code></pre>
-                    <p><em>Link para o script completo no repositório oficial: <a href="https://github.com/tatianesilva-ads/normalizacao-artigo" target="_blank">Ver script.sql no GitHub</a></em></p>
+                    
                 </section>
 
                 <section id="erros">
-                    <h2>6. Erros Comuns e Limitações</h2>
+                    <h2>7. Erros Comuns e Limitações</h2>
                     <div class="warning-box">
                         <h4>Cuidado com o excesso de normalização!</h4>
                         <p>Muitos iniciantes acham que devem normalizar absolutamente tudo até a última forma normal sem pensar no desempenho. Em sistemas analíticos (OLAP), tabelas excessivamente normalizadas exigem dezenas de <code>JOIN</code>s lentos. A normalização protege a escrita (OLTP), mas deve ser avaliada com cautela em relatórios massivos.</p>
@@ -191,7 +191,7 @@ INSERT INTO pedidos (cliente_id, produto_id, quantidade) VALUES (1, 1, 2);
                 </section>
 
                 <section id="autores" class="authors-section">
-                    <h2>7. Autores e Informações</h2>
+                    <h2>8. Autores e Informações</h2>
                     <p>Artigo revisado e publicado em: <strong>Outubro de 2026</strong>
                     
                     <div class="author-card">
